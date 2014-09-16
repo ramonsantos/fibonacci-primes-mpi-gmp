@@ -1,10 +1,10 @@
 fibonacci-primes-mpi-gmp
 ========================
 
-#Compilar
+#Como Compilar
 $ mpicc -I/opt/local/include -L/opt/local/lib -lgmp main.c -o main
 
-#Rodar
+#Como Rodar
 $ mpirun -np N ./main
 
-#Onde 'N' é o número de threads
+Onde 'N' é o número de threads
