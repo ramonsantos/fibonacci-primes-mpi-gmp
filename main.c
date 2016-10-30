@@ -3,61 +3,62 @@
 #include <mpi.h>
 #include <gmp.h>
 
-#define PRECISAO 25
+#define PRECISION 25
 
 int rank, size;
 
 int main(int argc, char* argv[]){
-    
-    //Arquivo com os números encontrados.
-    FILE* resultado;
-    
-    //Declaração
-    mpz_t fibo, ultm, penl;
-    
-    //Atribuição
+
+    // File with the numbers found.
+    FILE* result;
+
+    // Declaration of variables.
+    mpz_t fibo, last, penlt;
+
+    // Attribution of variables.
     mpz_init_set_str(fibo, "1", 10);
-    mpz_init_set_str(ultm, "1", 10);
-    mpz_init_set_str(penl, "1", 10);
-    
-    // 'n'º número de Fibonacci encontrado.
+    mpz_init_set_str(last, "1", 10);
+    mpz_init_set_str(penlt, "1", 10);
+
+    // Nth Fibonacci number found.
     int n_fib = 0;
-    
-    //Inicio da parte paralela.
+
+    // Start of parallel execution.
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
-    
+
     while(1){
-        
-        //Encontra o próximo número em 'fibo'.
-        mpz_add(fibo, ultm, penl);
-        mpz_set(penl, ultm);
-        mpz_set(ultm, fibo);        
-    
-        // Escolhe a thread para verificar a primaridade.
+
+        // Find the next Fibonacci number.
+        mpz_add(fibo, last, penlt);
+        mpz_set(penlt, last);
+        mpz_set(last, fibo);
+
+        // Choose a thread to check if the Fibonacci number is prime.
         if((n_fib % size) == rank){
-            
-            //Testa se o número encontrado é primo.
-            if(mpz_probab_prime_p(fibo, PRECISAO)){
 
-                //Imprime a data e hora que o número foi encontrado no arquivo.
-                system("DIA=$(date +%c) && echo [$DIA] >> resultado2");
+            // Check if the Fibonacci number is prime.
+            if(mpz_probab_prime_p(fibo, PRECISION)){
 
-                //Imprime o número encontrado, no arquivo.
-                resultado = fopen("resultado", "a");
-                mpz_out_str(resultado, 10, fibo);            
-                fputs("\n\n", resultado);
-                fclose(resultado);
+                // Time that the number was found.
+                system("DAY=$(date +%c) && echo [$DAY] >> result_file");
+
+                // Write number found in the file.
+                result = fopen("result_file", "a");
+                mpz_out_str(result, 10, fibo);
+                fputs("\n\n", result);
+                fclose(result);
 
             }
-            
+
         }
-        
+
         n_fib++;
+
     }
-    
-    // 'Fim' da parte paralela
+
+    // End of parallel execution.
     MPI_Finalize();
 
 }
