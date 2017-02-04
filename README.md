@@ -25,7 +25,7 @@ Onde 'N' é o número de threads
 
 A aplicação foi executado duas vezes. Uma com apenas 1 thread e outra com 4 threads. A execução era interrompida quando eram encontrados 32 números.
 
-| Threads | Números Encontrados | Tempo |
-|---------|---------------------|-------|
-|    1    |          32         | 11:47 |
-|    4    |          32         |  6:59 |
+| Threads | Números Encontrados |  Tempo  |
+|---------|---------------------|---------|
+|    1    |          32         | 11h 47m |
+|    4    |          32         |  6h 59m |
