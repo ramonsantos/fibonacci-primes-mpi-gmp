@@ -28,4 +28,4 @@ A aplicação foi executado duas vezes. Uma com apenas 1 thread e outra com 4 th
 | Threads | Números Encontrados |  Tempo  |
 |---------|---------------------|---------|
 |    1    |          32         | 11h 47m |
-|    4    |          32         |  6h 59m |
+|    4    |          32         | 06h 59m |
