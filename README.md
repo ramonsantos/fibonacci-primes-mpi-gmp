@@ -1,31 +1,27 @@
-# Números primos de Fibonacci
+# Fibonacci prime
 
-## Descrição
-Este projeto foi desenvolvido durante uma disciplina de Sistemas Distribuídos. O projeto foi feito para rodar em Clusters e consiste em obter os números da sequência de Fibonacci e verificar se estes são números primos.
+## Description
 
-## Dependências
+This project was developed during a Distributed Systems discipline. The project was made to run in Clusters. The purpose is to find the numbers in the Fibonacci sequence and check if they are prime numbers.
+
+## Dependencies
 
 * [OpenMPI](https://www.open-mpi.org/) - Message Passing Interface
 * [GMP](https://gmplib.org/) - GNU Multiple-Precision Library
 
-## Como Compilar
+## How to compile
 
 ```bash
   $ mpicc -I/opt/local/include -L/opt/local/lib -lgmp main.c -o main
 ```
 
-## Como Rodar
+## How to run
 
 ```bash
-$ mpirun -np N ./main
+  $ mpirun -np N ./main
 ```
-Onde 'N' é o número de threads
+Where '*N*' is the number of threads.
 
-## Resultados
+## Results
 
-A aplicação foi executado duas vezes. Uma com apenas 1 thread e outra com 4 threads. A execução era interrompida quando eram encontrados 32 números.
-
-| Threads | Números Encontrados |  Tempo  |
-|---------|---------------------|---------|
-|    1    |          32         | 11h 47m |
-|    4    |          32         | 06h 59m |
+In this study, the application was executed the first time with one thread and the second time with four threads.
