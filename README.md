@@ -28,3 +28,5 @@ Where '*N*' is the number of threads.
 ## Results
 
 In this study, the application was executed the first time with one thread and the second time with four threads.
+
+![Serial x Parallel](results.png)
